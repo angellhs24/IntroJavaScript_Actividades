@@ -1,20 +1,180 @@
-<div class="card">
-    <h2>Password Generator</h2>
-    <div class="display-container">
-        <input type="text" id="password-display" readonly placeholder="P4$5W0rD!">
-    </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseñas Seguras</title>
+    <style>
+        /* CSS: El diseño para que se vea como en la imagen de DEV.F */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0c;
+            color: #e6e6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-    <div class="settings">
-        <label>Character Length: <span id="length-val">10</span></label>
-        <input type="range" id="length-slider" min="8" max="20" value="10">
+        .card {
+            background-color: #24232c;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
 
-        <div class="options">
-            <label><input type="checkbox" id="uppercase" checked> Include Uppercase Letters</label>
-            <label><input type="checkbox" id="lowercase" checked> Include Lowercase Letters</label>
-            <label><input type="checkbox" id="numbers" checked> Include Numbers</label>
-            <label><input type="checkbox" id="symbols"> Include Symbols</label>
+        h2 {
+            text-align: center;
+            color: #818181;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .display-container {
+            background-color: #18171f;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        #password-display {
+            background: transparent;
+            border: none;
+            color: #e6e6e6;
+            font-size: 1.5rem;
+            font-weight: bold;
+            width: 100%;
+            outline: none;
+        }
+
+        .settings {
+            background-color: #24232c;
+        }
+
+        .length-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        #length-val {
+            color: #a4ffaf;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            accent-color: #a4ffaf;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .options input {
+            margin-right: 1rem;
+            accent-color: #a4ffaf;
+        }
+
+        #generate-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: #a4ffaf;
+            border: 2px solid #a4ffaf;
+            color: #24232c;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #generate-btn:hover {
+            background-color: transparent;
+            color: #a4ffaf;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Password Generator</h2>
+        
+        <div class="display-container">
+            <input type="text" id="password-display" readonly placeholder="P4$5W0rD!">
         </div>
 
-        <button id="generate-btn">GENERATE →</button>
+        <div class="settings">
+            <div class="length-container">
+                <span>Character Length</span>
+                <span id="length-val">10</span>
+            </div>
+            
+            <input type="range" id="length-slider" min="6" max="20" value="10">
+
+            <div class="options">
+                <label><input type="checkbox" id="uppercase" checked> Include Uppercase Letters</label>
+                <label><input type="checkbox" id="lowercase" checked> Include Lowercase Letters</label>
+                <label><input type="checkbox" id="numbers" checked> Include Numbers</label>
+                <label><input type="checkbox" id="symbols"> Include Symbols</label>
+            </div>
+
+            <button id="generate-btn">GENERATE →</button>
+        </div>
     </div>
-</div>
+
+    <script>
+        // JS: La lógica para que el botón y el slider funcionen
+        const display = document.getElementById('password-display');
+        const slider = document.getElementById('length-slider');
+        const lengthVal = document.getElementById('length-val');
+        const btn = document.getElementById('generate-btn');
+
+        const keys = {
+            upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            lower: "abcdefghijklmnopqrstuvwxyz",
+            number: "0123456789",
+            symbol: "!@#$%^&*()_+~`|}{[]:;?><,./-="
+        };
+
+        // Actualiza el número de la longitud cuando mueves el slider
+        slider.addEventListener('input', () => {
+            lengthVal.innerText = slider.value;
+        });
+
+        // Función principal para generar la contraseña
+        function generatePassword() {
+            let charset = "";
+            let password = "";
+
+            if (document.getElementById('uppercase').checked) charset += keys.upper;
+            if (document.getElementById('lowercase').checked) charset += keys.lower;
+            if (document.getElementById('numbers').checked) charset += keys.number;
+            if (document.getElementById('symbols').checked) charset += keys.symbol;
+
+            if (charset === "") {
+                alert("Por favor, selecciona al menos una opción.");
+                return;
+            }
+
+            for (let i = 0; i < slider.value; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset[randomIndex];
+            }
+
+            display.value = password;
+        }
+
+        // Conecta el botón con la función
+        btn.addEventListener('click', generatePassword);
+    </script>
+</body>
+</html>
