@@ -1,0 +1,25 @@
+// 1. Declaramos la variable 'nota' con un valor entre 0 y 100
+let nota = 85; 
+
+// 2. Verificamos si la nota es mayor a 0 (evaluación Truthy/Falsy)
+if (nota > 0) {
+    
+    // 3. Utilizamos operadores de comparación para determinar el rango
+    if (nota >= 90) {
+        console.log("Nota: " + nota + ". El estudiante aprueba con: Excelente.");
+    } 
+    else if (nota >= 75) {
+        console.log("Nota: " + nota + ". El estudiante aprueba con: Bien.");
+    } 
+    else if (nota >= 60) {
+        console.log("Nota: " + nota + ". El estudiante aprueba con: Suficiente.");
+    } 
+    else {
+        console.log("Nota: " + nota + ". El estudiante no aprueba.");
+    }
+
+} else if (nota === 0) {
+    console.log("Nota: 0. El estudiante no aprueba (esfuerzo nulo).");
+} else {
+    console.log("La nota ingresada no es válida.");
+}
