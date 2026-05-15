@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Recetario</title>
+</head>
+<body>
+    <header>
+        <h1>Mi Recetario</h1>
+    </header>
+
+    <main>
+        <!-- Sección del formulario para agregar recetas -->
+        <section>
+            <h2>Agregar Nueva Receta</h2>
+            <form id="formulario-receta">
+                <div>
+                    <label for="nombre-receta">Nombre de la Receta:</label>
+                    <input type="text" id="nombre-receta" placeholder="Ej: Pasta a la Carbonara" required>
+                </div>
+
+                <div>
+                    <label for="ingredientes">Ingredientes:</label>
+                    <textarea id="ingredientes" rows="5" placeholder="Ingresa los ingredientes, uno por línea" required></textarea>
+                </div>
+
+                <div>
+                    <label for="preparacion">Preparación:</label>
+                    <textarea id="preparacion" rows="6" placeholder="Describe los pasos para preparar la receta" required></textarea>
+                </div>
+
+                <div>
+                    <label for="tiempo">Tiempo de Preparación (minutos):</label>
+                    <input type="number" id="tiempo" placeholder="Ej: 30" min="1">
+                </div>
+
+                <div>
+                    <label for="dificultad">Nivel de Dificultad:</label>
+                    <select id="dificultad">
+                        <option value="fácil">Fácil</option>
+                        <option value="media">Media</option>
+                        <option value="difícil">Difícil</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="porciones">Número de Porciones:</label>
+                    <input type="number" id="porciones" placeholder="Ej: 4" min="1">
+                </div>
+
+                <div>
+                    <button type="submit">Guardar Receta</button>
+                    <button type="reset">Limpiar Formulario</button>
+                </div>
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Sección para mostrar las recetas guardadas -->
+        <section>
+            <h2>Mis Recetas</h2>
+            <div id="contenedor-recetas">
+                <p>No hay recetas guardadas aún.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mi Recetario Personal</p>
+    </footer>
+</body>
+</html>
