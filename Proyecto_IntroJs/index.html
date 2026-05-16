@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Recetario</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -17,7 +18,7 @@
             <form id="formulario-receta">
                 <div>
                     <label for="nombre-receta">Nombre de la Receta:</label>
-                    <input type="text" id="nombre-receta" placeholder="Ej: Pasta a la Carbonara" required>
+                    <input type="text" id="nombre-receta" placeholder="Ej: Pechugas a la Crema" required>
                 </div>
 
                 <div>
@@ -61,6 +62,7 @@
         <!-- Sección para mostrar las recetas guardadas -->
         <section>
             <h2>Mis Recetas</h2>
+            <button id="boton-eliminar-todas" type="button">Eliminar todas</button>
             <div id="contenedor-recetas">
                 <p>No hay recetas guardadas aún.</p>
             </div>
@@ -68,7 +70,8 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Mi Recetario Personal</p>
+        <p>&copy; 2026 Mi Recetario Personal Angel Hdez</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
